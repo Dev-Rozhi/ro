@@ -1,0 +1,41 @@
+<!-- در صفحه checkout.html -->
+<div class="payment-options">
+    <div class="option">
+        <input type="radio" name="payment" id="cash" checked>
+        <label for="cash">
+            <i class="fas fa-money-bill-wave"></i>
+            پرداخت در محل
+        </label>
+    </div>
+    <div class="option">
+        <input type="radio" name="payment" id="online">
+        <label for="online">
+            <i class="fas fa-credit-card"></i>
+            پرداخت آنلاین
+        </label>
+    </div>
+</div>
+
+<!-- فرم سفارش با Formspree -->
+<form action="https://formspree.io/f/your-form-id" method="POST" class="checkout-form">
+    <input type="hidden" name="product" value="سامسونگ S23">
+    <input type="hidden" name="price" value="32900000">
+    
+    <div class="form-group">
+        <input type="text" name="name" placeholder="نام کامل" required>
+        <input type="tel" name="phone" placeholder="شماره موبایل" required>
+    </div>
+    
+    <div class="form-group">
+        <textarea name="address" placeholder="آدرس کامل تحویل" rows="3" required></textarea>
+    </div>
+    
+    <div class="form-group">
+        <textarea name="note" placeholder="یادداشت (اختیاری)" rows="2"></textarea>
+    </div>
+    
+    <button type="submit" class="btn-primary btn-large btn-block">
+        <i class="fas fa-check-circle"></i>
+        ثبت سفارش نهایی
+    </button>
+</form>

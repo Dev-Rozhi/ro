@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>موبایل‌شاپ | دنیای تکنولوژی در دستان شما</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* صفحه لودینگ اختصاصی */
+        #splash-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.8s ease-out;
+        }
+        
+        .loader-container {
+            text-align: center;
+        }
+        
+        .logo-animated {
+            font-size: 4rem;
+            color: white;
+            margin-bottom: 20px;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        
+        .logo-animated i {
+            animation: bounce 1.5s infinite alternate;
+        }
+        
+        .logo-animated span {
+            font-weight: 900;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        
+        .loading-text {
+            color: white;
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .loader {
+            width: 80px;
+            height: 80px;
+            position: relative;
+            margin: 0 auto;
+        }
+        
+        .loader-inner {
+            width: 100%;
+            height: 100%;
+            border: 5px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s linear infinite;
+        }
+        
+        .products-floating {
+            position: absolute;
+            bottom: 20%;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+        
+        .floating-product {
+            font-size: 2.5rem;
+            opacity: 0.7;
+            animation: floatProduct 6s ease-in-out infinite;
+        }
+        
+        .floating-product:nth-child(1) { animation-delay: 0s; color: #ff6b6b; }
+        .floating-product:nth-child(2) { animation-delay: 0.5s; color: #4ecdc4; }
+        .floating-product:nth-child(3) { animation-delay: 1s; color: #ffd166; }
+        .floating-product:nth-child(4) { animation-delay: 1.5s; color: #06d6a0; }
+        .floating-product:nth-child(5) { animation-delay: 2s; color: #118ab2; }
+        
+        @keyframes bounce {
+            0% { transform: translateY(0px); }
+            100% { transform: translateY(-20px); }
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @keyframes floatProduct {
+            0%, 100% { 
+                transform: translateY(0) rotate(0deg); 
+                opacity: 0.7;
+            }
+            50% { 
+                transform: translateY(-30px) rotate(10deg); 
+                opacity: 1;
+            }
+        }
+        
+        .progress-bar {
+            width: 300px;
+            height: 4px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 10px;
+            margin-top: 20px;
+            overflow: hidden;
+        }
+        
+        .progress {
+            height: 100%;
+            background: white;
+            width: 0%;
+            border-radius: 10px;
+            animation: progressLoad 2.5s ease-in-out forwards;
+        }
+        
+        @keyframes progressLoad {
+            0% { width: 0%; }
+            100% { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <!-- صفحه لودینگ -->
+    <div id="splash-screen">
+        <div class="loader-container">
+            <div class="logo-animated">
+                <i class="fas fa-mobile-alt"></i>
+                <span>موبایل‌شاپ</span>
+            </div>
+            <div class="loading-text">در حال بارگذاری دنیای تکنولوژی...</div>
+            
+            <div class="loader">
+                <div class="loader-inner"></div>
+            </div>
+            
+            <div class="progress-bar">
+                <div class="progress"></div>
+            </div>
+        </div>
+        
+        <div class="products-floating">
+            <div class="floating-product"><i class="fas fa-mobile"></i></div>
+            <div class="floating-product"><i class="fas fa-tablet-alt"></i></div>
+            <div class="floating-product"><i class="fas fa-headphones"></i></div>
+            <div class="floating-product"><i class="fas fa-clock"></i></div>
+            <div class="floating-product"><i class="fas fa-laptop"></i></div>
+        </div>
+    </div>
+
+    <!-- محتوای اصلی -->
+    <div id="main-content" style="opacity: 0; transition: opacity 0.5s;">
+        <!-- هدر جذاب با افکت -->
+        <header class="header">
+            <!-- نوار بالایی با افکت موج -->
+            <div class="top-bar animated-wave">
+                <div class="container">
+                    <div class="scrolling-text">
+                        <marquee behavior="scroll" direction="right">
+                            🎉 تخفیف‌های باورنکردنی آغاز شد! | 🚀 ارسال رایگان برای خریدهای بالای ۳ میلیون | 📱 جدیدترین گوشی‌ها با ۴۰% تخفیف | 💎 ضمانت اصل بودن کالا
+                        </marquee>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- هدر اصلی -->
+            <div class="container">
+                <div class="header-main">
+                    <!-- لوگو با انیمیشن -->
+                    <a href="index.html" class="logo">
+                        <div class="logo-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                            <div class="pulse"></div>
+                        </div>
+                        <div class="logo-text">
+                            <span class="logo-main">موبایل‌شاپ</span>
+                            <span class="logo-sub">دنیای تکنولوژی</span>
+                        </div>
+                    </a>
+                    
+                    <!-- نوار جستجو با افکت -->
+                    <div class="search-box">
+                        <input type="text" placeholder="جستجوی محصولات (مثال: آیفون ۱۴، گلکسی S23...)">
+                        <button class="search-btn">
+                            <i class="fas fa-search"></i>
+                        </button>
+                        <div class="search-suggestions">
+                            <span>پر جستجو: <a href="#">گوشی سامسونگ</a> • <a href="#">هندزفری بلوتوث</a> • <a href="#">ساعت هوشمند</a></span>
+                        </div>
+                    </div>
+                    
+                    <!-- اکشن‌ها -->
+                    <div class="header-actions">
+                        <a href="#" class="action-btn wishlist">
+                            <i class="far fa-heart"></i>
+                            <span class="badge">۳</span>
+                        </a>
+                        <a href="cart.html" class="action-btn cart">
+                            <i class="fas fa-shopping-bag"></i>
+                            <span class="badge">۲</span>
+                            <span class="cart-text">سبد خرید</span>
+                        </a>
+                        <a href="login.html" class="action-btn user">
+                            <i class="far fa-user"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+        
+        <!-- بخش هیرو با اسلایدر محصولات -->
+        <section class="hero-slider">
+            <div class="slider-container">
+                <!-- اسلاید ۱ -->
+                <div class="slide active">
+                    <div class="slide-content">
+                        <div class="slide-text">
+                            <span class="slide-badge">جدیدترین مدل</span>
+                            <h1>آیفون ۱۵ پرو مکس</h1>
+                            <p>تجربه دوربین حرفه‌ای با حسگر ۴۸ مگاپیکسل و تراشه A17 پرو</p>
+                            <div class="slide-price">
+                                <span class="old-price">۸۵,۰۰۰,۰۰۰ تومان</span>
+                                <span class="new-price">۶۲,۹۰۰,۰۰۰ تومان</span>
+                            </div>
+                            <a href="#" class="btn-slide">
+                                <i class="fas fa-bolt"></i>
+                                خرید فوری
+                            </a>
+                        </div>
+                        <div class="slide-image">
+                            <img src="https://cdn.iconscout.com/icon/free/png-256/free-iphone-15-5694777-4736351.png" alt="iPhone 15 Pro Max">
+                            <div class="floating-accessories">
+                                <img src="https://cdn-icons-png.flaticon.com/128/2972/2972385.png" class="acc1" alt="AirPods">
+                                <img src="https://cdn-icons-png.flaticon.com/128/814/814857.png" class="acc2" alt="Apple Watch">
+                                <img src="https://cdn-icons-png.flaticon.com/128/2972/2972425.png" class="acc3" alt="Charger">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- اسلاید ۲ -->
+                <div class="slide">
+                    <div class="slide-content">
+                        <div class="slide-text">
+                            <span class="slide-badge">پرفروش ترین</span>
+                            <h1>سامسونگ گلکسی S23 اولترا</h1>
+                            <p>شارژ ۵۰۰۰ میلی‌آمپری • دوربین ۲۰۰ مگاپیکسلی • قلم S-Pen</p>
+                            <div class="slide-price">
+                                <span class="old-price">۴۸,۰۰۰,۰۰۰ تومان</span>
+                                <span class="new-price">۳۴,۹۰۰,۰۰۰ تومان</span>
+                            </div>
+                            <a href="#" class="btn-slide">
+                                <i class="fas fa-star"></i>
+                                مشاهده جزئیات
+                            </a>
+                        </div>
+                        <div class="slide-image">
+                            <img src="https://cdn.iconscout.com/icon/premium/png-256-thumb/samsung-galaxy-s23-5694850-4736426.png" alt="Samsung S23 Ultra">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- دکمه‌های کنترل اسلایدر -->
+            <div class="slider-controls">
+                <button class="prev-slide"><i class="fas fa-chevron-right"></i></button>
+                <div class="slider-dots">
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+                <button class="next-slide"><i class="fas fa-chevron-left"></i></button>
+            </div>
+        </section>
+        
+        <!-- بخش دسته‌بندی‌های انیمیشنی -->
+        <section class="categories">
+            <div class="container">
+                <h2 class="section-title">
+                    <i class="fas fa-tags"></i>
+                    دسته‌بندی محصولات
+                </h2>
+                
+                <div class="categories-grid">
+                    <a href="#" class="category-card">
+                        <div class="category-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                            <div class="pulse-effect"></div>
+                        </div>
+                        <h3>گوشی موبایل</h3>
+                        <p>برترین برندها</p>
+                        <span class="product-count">۲۴۳ محصول</span>
+                        <div class="hover-effect"></div>
+                    </a>
+                    
+                    <a href="#" class="category-card">
+                        <div class="category-icon">
+                            <i class="fas fa-headphones"></i>
+                            <div class="pulse-effect"></div>
+                        </div>
+                        <h3>هدفون و هندزفری</h3>
+                        <p>سیمی و بی‌سیم</p>
+                        <span class="product-count">۱۵۶ محصول</span>
+                        <div class="hover-effect"></div>
+                    </a>
+                    
+                    <a href="#" class="category-card">
+                        <div class="category-icon">
+                            <i class="fas fa-clock"></i>
+                            <div class="pulse-effect"></div>
+                        </div>
+                        <h3>ساعت هوشمند</h3>
+                        <p>اسپرت و لوکس</p>
+                        <span class="product-count">۸۹ محصول</span>
+                        <div class="hover-effect"></div>
+                    </a>
+                    
+                    <a href="#" class="category-card">
+                        <div class="category-icon">
+                            <i class="fas fa-tablet-alt"></i>
+                            <div class="pulse-effect"></div>
+                        </div>
+                        <h3>تبلت</h3>
+                        <p>اندروید و iOS</p>
+                        <span class="product-count">۷۶ محصول</span>
+                        <div class="hover-effect"></div>
+                    </a>
+                    
+                    <a href="#" class="category-card">
+                        <div class="category-icon">
+                            <i class="fas fa-laptop"></i>
+                            <div class="pulse-effect"></div>
+                        </div>
+                        <h3>لپ‌تاپ</h3>
+                        <p>کاربردی و گیمینگ</p>
+                        <span class="product-count">۱۳۲ محصول</span>
+                        <div class="hover-effect"></div>
+                    </a>
+                    
+                    <a href="#" class="category-card">
+                        <div class="category-icon">
+                            <i class="fas fa-gamepad"></i>
+                            <div class="pulse-effect"></div>
+                        </div>
+                        <h3>گجت و کنسول</h3>
+                        <p>سرگرمی و بازی</p>
+                        <span class="product-count">۶۷ محصول</span>
+                        <div class="hover-effect"></div>
+                    </a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- تایمر تخفیف‌های شگفت‌انگیز -->
+        <section class="flash-sale">
+            <div class="container">
+                <div class="flash-header">
+                    <div class="flash-title">
+                        <i class="fas fa-bolt"></i>
+                        <h2>فروش فلش</h2>
+                        <span class="badge-hot">HOT</span>
+                    </div>
+                    
+                    <div class="countdown-timer">
+                        <div class="timer-box">
+                            <span class="number" id="hours">۰۲</span>
+                            <span class="label">ساعت</span>
+                        </div>
+                        <div class="timer-separator">:</div>
+                        <div class="timer-box">
+                            <span class="number" id="minutes">۴۵</span>
+                            <span class="label">دقیقه</span>
+                        </div>
+                        <div class="timer-separator">:</div>
+                        <div class="timer-box">
+                            <span class="number" id="seconds">۱۸</span>
+                            <span class="label">ثانیه</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flash-products">
+                    <!-- محصول فلش ۱ -->
+                    <div class="flash-product">
+                        <div class="product-tag">
+                            <span class="discount-tag">۴۵٪</span>
+                            <span class="sold-tag">۸۴ عدد فروخته شد</span>
+                        </div>
+                        <div class="flash-image">
+                            <img src="https://cdn-icons-png.flaticon.com/128/3588/3588650.png" alt="AirPods Pro">
+                        </div>
+                        <div class="flash-content">
+                            <h3>ایرپادز پرو ۲</h3>
+                            <div class="rating">
+                                ★★★★★ <span>(۱۲۴ نظر)</span>
+                            </div>
+                            <div class="progress-bar-sale">
+                                <div class="progress" style="width: 75%"></div>
+                            </div>
+                            <div class="stock-info">تنها ۱۵ عدد باقی مانده</div>
+                            <div class="flash-price">
+                                <span class="price-new">۱۲,۹۰۰,۰۰۰ تومان</span>
+                                <span class="price-old">۲۳,۵۰۰,۰۰۰ تومان</span>
+                            </div>
+                            <a href="#" class="btn-flash">
+                                <i class="fas fa-shopping-cart"></i>
+                                افزودن به سبد
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- محصولات بیشتر... -->
+                </div>
+            </div>
+        </section>
+        
+        <!-- بخش برندهای اسلایدری -->
+        <section class="brands-slider">
+            <div class="container">
+                <h2 class="section-title">
+                    <i class="fas fa-crown"></i>
+                    برندهای همکار ما
+                </h2>
+                
+                <div class="brands-track">
+                    <div class="brand-logo"><img src="https://cdn-icons-png.flaticon.com/512/732/732221.png" alt="Samsung"></div>
+                    <div class="brand-logo"><img src="https://cdn-icons-png.flaticon.com/512/0/747.png" alt="Apple"></div>
+                    <div class="brand-logo"><img src="https://cdn-icons-png.flaticon.com/512/882/882745.png" alt="Xiaomi"></div>
+                    <div class="brand-logo"><img src="https://cdn-icons-png.flaticon.com/512/882/882727.png" alt="Huawei"></div>
+                    <div class="brand-logo"><img src="https://cdn-icons-png.flaticon.com/512/226/226269.png" alt="Nokia"></div>
+                    <div class="brand-logo"><img src="https://cdn-icons-png.flaticon.com/512/5968/5968769.png" alt="OnePlus"></div>
+                    <div class="brand-logo"><img src="https://cdn-icons-png.flaticon.com/512/2173/2173475.png" alt="Google"></div>
+                    <div class="brand-logo"><img src="https://cdn-icons-png.flaticon.com/512/882/882708.png" alt="OPPO"></div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- اسکریپت برای صفحه لودینگ -->
+    <script>
+        // بعد از لود کامل صفحه، اسپلش اسکرین رو حذف کن
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                const splash = document.getElementById('splash-screen');
+                const main = document.getElementById('main-content');
+                
+                // افکت fade out برای اسپلش
+                splash.style.opacity = '0';
+                
+                setTimeout(function() {
+                    splash.style.display = 'none';
+                    main.style.opacity = '1';
+                }, 800);
+            }, 2500); // 2.5 ثانیه نمایش اسپلش
+        });
+        
+        // تایمر شمارش معکوس
+        function updateTimer() {
+            const hours = document.getElementById('hours');
+            const minutes = document.getElementById('minutes');
+            const seconds = document.getElementById('seconds');
+            
+            let h = parseInt(hours.textContent);
+            let m = parseInt(minutes.textContent);
+            let s = parseInt(seconds.textContent);
+            
+            if (s > 0) {
+                s--;
+            } else {
+                s = 59;
+                if (m > 0) {
+                    m--;
+                } else {
+                    m = 59;
+                    if (h > 0) {
+                        h--;
+                    } else {
+                        h = 23;
+                        m = 59;
+                        s = 59;
+                    }
+                }
+            }
+            
+            hours.textContent = h.toString().padStart(2, '0');
+            minutes.textContent = m.toString().padStart(2, '0');
+            seconds.textContent = s.toString().padStart(2, '0');
+        }
+        
+        setInterval(updateTimer, 1000);
+        
+        // اسلایدر ساده
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.dot');
+        
+        function showSlide(n) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            currentSlide = (n + slides.length) % slides.length;
+            
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+        }
+        
+        // دکمه‌های کنترل
+        document.querySelector('.next-slide').addEventListener('click', () => {
+            showSlide(currentSlide + 1);
+        });
+        
+        document.querySelector('.prev-slide').addEventListener('click', () => {
+            showSlide(currentSlide - 1);
+        });
+        
+        // اتو اسلاید هر 5 ثانیه
+        setInterval(() => {
+            showSlide(currentSlide + 1);
+        }, 5000);
+        
+        // کلیک روی دات‌ها
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                showSlide(index);
+            });
+        });
+    </script>
+
+    <style>
+        /* استایل‌های جدید برای افکت‌ها */
+        
+        /* هدر */
+        .header-main {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 0;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .logo-icon {
+            position: relative;
+            font-size: 2.5rem;
+            color: #667eea;
+        }
+        
+        .pulse {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 2px solid #667eea;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+            top: 0;
+            left: 0;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(0.8); opacity: 0.7; }
+            70% { transform: scale(1.2); opacity: 0; }
+            100% { transform: scale(2.2); opacity: 0; }
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        
+        
+        /* نوار موج‌دار */
+        .animated-wave {
+            background: linear-gradient(90deg, #667eea, #764ba2, #667eea);
+            background-size: 200% 100%;
+            animation: wave 3s infinite linear;
+        }
+        
+        @keyframes wave {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+        
+        .scrolling-text marquee {
+            color: white;
+            padding: 10px 0;
+            font-weight: 500;
+        }
+        
+        /* جستجو */
+        .search-box {
+            flex: 1;
+            max-width: 500px;
+            position: relative;
+        }
+        
+        .search-box input {
+            width: 100%;
+            padding: 15px 50px 15px 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 50px;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .search-box input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        
+        .search-btn {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #667eea;
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .search-btn:hover {
+            background: #764ba2;
+            transform: translateY(-50%) scale(1.1);
+        }
+        
+        .search-suggestions {
+            margin-top: 5px;
+            font-size: 0.8rem;
+            color: #666;
+        }
+        
+        .search-suggestions a {
+            color: #667eea;
+            text-decoration: none;
+            margin: 0 5px;
+        }
+        
+        /* اکشن‌ها */
+        .header-actions {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        
+        .action-btn {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            color: #333;
+            font-size: 1.2rem;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .action-btn:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        .action-btn.cart {
+            width: auto;
+            padding: 0 20px;
+            gap: 10px;
+        }
+        
+        .badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #ff4757;
+            color: white;
+            font-size: 0.7rem;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* اسلایدر */
+        .hero-slider {
+            position: relative;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 20px;
+            margin: 30px auto;
+            max-width: 1200px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .slide {
+            display: none;
+            padding: 50px;
+        }
+        
+        .slide.active {
+            display: block;
+        }
+        
+        .slide-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 50px;
+        }
+        
+        .slide-text {
+            flex: 1;
+            animation: fadeInLeft 1s ease;
+        }
+        
+        @keyframes fadeInLeft {
+            from { opacity: 0; transform: translateX(30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        .slide-badge {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff6b6b, #ff8e53);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        
+        .slide-text h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        
+        .slide-text p {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        
+        .slide-price {
+            margin-bottom: 30px;
+        }
+        
+        .old-price {
+            font-size: 1.5rem;
+            color: #999;
+            text-decoration: line-through;
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .new-price {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #ff6b6b;
+            display: block;
+        }
+        
+        .btn-slide {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 18px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+        
+        .btn-slide:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(102, 126, 234, 0.4);
+        }
+        
+        .slide-image {
+            flex: 1;
+            position: relative;
+            animation: fadeInRight 1s ease;
+        }
+        
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        .slide-image img {
+            max-width: 100%;
+            filter: drop-shadow(0 20px 30px rgba(0,0,0,0.2));
+            animation: floatPhone 3s ease-in-out infinite;
+        }
+        
+        @keyframes floatPhone {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+        
+        .floating-accessories img {
+            position: absolute;
+            width: 60px;
+            filter: drop-shadow(0 5px 10px rgba(0,0,0,0.2));
+            animation: floatAcc 4s ease-in-out infinite;
+        }
+        
+        .floating-accessories .acc1 {
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+        
+        .floating-accessories .acc2 {
+            top: 60%;
+            right: 15%;
+            animation-delay: 1s;
+        }
+        
+        .floating-accessories .acc3 {
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 2s;
+        }
+        
+        @keyframes floatAcc {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(10deg); }
+        }
+        
+        /* کنترل‌های اسلایدر */
+        .slider-controls {
+            position: absolute;
+            bottom: 30px;
+            right: 50%;
+            transform: translateX(50%);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background: rgba(255,255,255,0.9);
+            padding: 10px 20px;
+            border-radius: 50px;
+        }
+        
+        .prev-slide, .next-slide {
+            background: #667eea;
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+        
+        .prev-slide:hover, .next-slide:hover {
+            background: #764ba2;
+            transform: scale(1.1);
+        }
+        
+        .slider-dots {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .dot {
+            width: 12px;
+            height: 12px;
+            background: #ddd;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .dot.active {
+            background: #667eea;
+            transform: scale(1.2);
+        }
+        
+        /* دسته‌بندی‌ها */
+        .categories {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .section-title i {
+            color: #667eea;
+        }
+        
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 30px;
+        }
+        
+        .category-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px 20px;
+            text-align: center;
+            text-decoration: none;
+            color: inherit;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.1);
+        }
+        
+        .category-icon {
+            position: relative;
+            font-size: 3rem;
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+        
+        .pulse-effect {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: rgba(102, 126, 234, 0.1);
+            border-radius: 50%;
+            top: 0;
+            left: 0;
+            animation: pulse 2s infinite;
+        }
+        
+        .category-card h3 {
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+        
+        .category-card p {
+            color: #666;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+        }
+        /* مشکل: فراموش شده colon (:) */
+.logo-main {
+    font-size: 1.8rem;
+    font-weight: 900;
+    background: linear-gradient(45deg, #667eea, #764ba2); /* این درسته */
+    -webkit-background-clip: text; /* اینجا مشکل داشت */
+    -webkit-text-fill-color: transparent;
+    background-clip: text; /* این رو اضافه کن */
+}
